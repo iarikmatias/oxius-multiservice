@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OXIUS Multiservice</title>
+
+    <!-- Estilos generales -->
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -14,12 +16,16 @@
         header {
             background-color: #1f2933;
             color: white;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
+        }
+        header img {
+            max-width: 180px;
+            margin-bottom: 15px;
         }
         section {
             padding: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
             background-color: white;
             margin-top: 20px;
@@ -39,13 +45,6 @@
             padding: 15px;
             border-radius: 8px;
         }
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
         .boton {
             display: inline-block;
             margin-top: 10px;
@@ -58,11 +57,55 @@
         .boton:hover {
             background-color: #1d4ed8;
         }
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Botón WhatsApp flotante */
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 18px;
+            border-radius: 50%;
+            font-size: 22px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        /* Galería */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .galeria img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* QR */
+        .qr {
+            text-align: center;
+        }
+        .qr img {
+            max-width: 200px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
 <header>
+    <!-- Logo -->
+    <img src="logo.png" alt="Logo OXIUS Multiservice">
     <h1>OXIUS Multiservice</h1>
     <p>Soluciones integrales para el hogar y la industria</p>
 </header>
@@ -70,9 +113,9 @@
 <section>
     <h2>¿Quiénes somos?</h2>
     <p>
-        OXIUS Multiservice es un servicio multidisciplinario dedicado a la realización de trabajos generales
-        de mantención, reparación y terminaciones. Nos enfocamos en entregar soluciones prácticas,
-        seguras y de calidad.
+        OXIUS Multiservice es un servicio multidisciplinario dedicado a la mantención,
+        reparación y mejoramiento de espacios. Trabajamos con responsabilidad,
+        compromiso y enfoque en la calidad.
     </p>
 </section>
 
@@ -84,22 +127,53 @@
         <li>Gasfitería</li>
         <li>Terminaciones y remodelaciones</li>
         <li>Mantención general</li>
-        <li>Trabajos varios a pedido</li>
+        <li>Trabajos personalizados</li>
     </ul>
+</section>
+
+<section>
+    <h2>Trabajos realizados</h2>
+    <div class="galeria">
+        <img src="trabajo1.jpg" alt="Trabajo 1">
+        <img src="trabajo2.jpg" alt="Trabajo 2">
+        <img src="trabajo3.jpg" alt="Trabajo 3">
+    </div>
+    <p style="font-size:14px; color:#666;">*Imágenes referenciales. Puedes reemplazarlas por fotos reales.</p>
+</section>
+
+<section>
+    <h2>Ubicación / Zona de trabajo</h2>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.225144299691!2d-70.64827!3d-33.45694"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+    <p>Atendemos en Región Metropolitana y alrededores.</p>
 </section>
 
 <section class="contacto">
     <h2>Contacto</h2>
     <p><strong>Teléfono / WhatsApp:</strong> +56 9 1234 5678</p>
     <p><strong>Correo:</strong> oxius.multiservice@gmail.com</p>
-    <p><strong>Zona de trabajo:</strong> Región Metropolitana y alrededores</p>
 
     <a class="boton" href="https://wa.me/56912345678" target="_blank">Contactar por WhatsApp</a>
+</section>
+
+<section class="qr">
+    <h2>Escanea y comparte</h2>
+    <p>Escanea este código QR para acceder directamente a nuestra página web.</p>
+    <img src="qr.png" alt="QR OXIUS Multiservice">
 </section>
 
 <footer>
     © 2025 OXIUS Multiservice – Todos los derechos reservados
 </footer>
+
+<!-- Botón WhatsApp flotante -->
+<a class="whatsapp" href="https://wa.me/56912345678" target="_blank">🟢</a>
 
 </body>
 </html>

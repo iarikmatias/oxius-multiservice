@@ -1,0 +1,11 @@
+.vscode/
+*.lnk
+*.docx
+*.exe
+*.tmp
+desktop.ini
+*.url
+*.rar
+*.mp3
+*.jpg
+*.png

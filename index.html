@@ -5,96 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OXIUS Multiservice</title>
 
-    <!-- Estilos generales -->
     <style>
+        :root {
+            --primary: #1f2933;
+            --accent: #2563eb;
+            --bg: #f4f4f4;
+            --whatsapp: #25D366;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
-            background-color: #f4f4f4;
+            background-color: var(--bg);
             color: #333;
         }
+
         header {
-            background-color: #1f2933;
+            background-color: var(--primary);
             color: white;
             padding: 30px 20px;
             text-align: center;
         }
+
         header img {
             max-width: 180px;
             margin-bottom: 15px;
         }
+
         section {
             padding: 20px;
             max-width: 1000px;
-            margin: auto;
+            margin: 20px auto;
             background-color: white;
-            margin-top: 20px;
             border-radius: 8px;
         }
+
         h2 {
-            color: #1f2933;
+            color: var(--primary);
         }
+
         ul {
             list-style-type: square;
         }
+
         .servicios li {
             margin-bottom: 8px;
         }
+
         .contacto {
             background-color: #e5e7eb;
-            padding: 15px;
-            border-radius: 8px;
         }
+
         .boton {
             display: inline-block;
             margin-top: 10px;
             padding: 10px 15px;
-            background-color: #2563eb;
+            background-color: var(--accent);
             color: white;
             text-decoration: none;
             border-radius: 5px;
         }
+
         .boton:hover {
             background-color: #1d4ed8;
         }
+
         footer {
             text-align: center;
             padding: 15px;
-            margin-top: 20px;
             font-size: 14px;
             color: #555;
         }
 
-        /* Botón WhatsApp flotante */
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* WhatsApp flotante */
         .whatsapp {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #25D366;
-            color: white;
-            padding: 15px 18px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
             border-radius: 50%;
-            font-size: 22px;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 1000;
         }
 
-        /* Galería */
-        .galeria {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        .galeria img {
-            width: 100%;
-            border-radius: 8px;
+        .whatsapp img {
+            width: 32px;
+            height: 32px;
         }
 
-        /* QR */
         .qr {
             text-align: center;
         }
+
         .qr img {
             max-width: 200px;
             margin-top: 10px;
@@ -104,7 +146,6 @@
 <body>
 
 <header>
-    <!-- Logo -->
     <img src="logo.png" alt="Logo OXIUS Multiservice">
     <h1>OXIUS Multiservice</h1>
     <p>Soluciones integrales para el hogar y la industria</p>
@@ -113,9 +154,9 @@
 <section>
     <h2>¿Quiénes somos?</h2>
     <p>
-        OXIUS Multiservice es un servicio multidisciplinario dedicado a la mantención,
-        reparación y mejoramiento de espacios. Trabajamos con responsabilidad,
-        compromiso y enfoque en la calidad.
+        OXIUS Multiservice entrega soluciones profesionales en mantención,
+        reparación y mejoras del hogar, con enfoque en calidad, responsabilidad
+        y confianza.
     </p>
 </section>
 
@@ -133,25 +174,23 @@
 
 <section>
     <h2>Trabajos realizados</h2>
-    <div class="galeria">
-        <img src="trabajo1.jpg" alt="Trabajo 1">
-        <img src="trabajo2.jpg" alt="Trabajo 2">
-        <img src="trabajo3.jpg" alt="Trabajo 3">
-    </div>
-    <p style="font-size:14px; color:#666;">*Imágenes referenciales. Puedes reemplazarlas por fotos reales.</p>
-</section>
 
-<section>
-    <h2>Ubicación / Zona de trabajo</h2>
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.225144299691!2d-70.64827!3d-33.45694"
-        width="100%"
-        height="300"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-    </iframe>
-    <p>Atendemos en Región Metropolitana y alrededores.</p>
+    <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+            <img src="trabajo1.jpg" alt="Trabajo 1">
+            <img src="trabajo2.jpg" alt="Trabajo 2">
+            <img src="trabajo3.jpg" alt="Trabajo 3">
+        </div>
+
+        <div class="carousel-buttons">
+            <button onclick="prevSlide()">❮</button>
+            <button onclick="nextSlide()">❯</button>
+        </div>
+    </div>
+
+    <p style="font-size:14px; color:#666;">
+        *Reemplaza estas imágenes por trabajos reales.
+    </p>
 </section>
 
 <section class="contacto">
@@ -159,12 +198,14 @@
     <p><strong>Teléfono / WhatsApp:</strong> +56 9 8836 1607</p>
     <p><strong>Correo:</strong> oxius.multiservice@gmail.com</p>
 
-    <a class="boton" href="https://wa.me/56912345678" target="_blank">Contactar por WhatsApp</a>
+    <a class="boton" href="https://wa.me/56912345678" target="_blank">
+        Contactar por WhatsApp
+    </a>
 </section>
 
 <section class="qr">
     <h2>Escanea y comparte</h2>
-    <p>Escanea este código QR para acceder directamente a nuestra página web.</p>
+    <p>Accede directamente a nuestra página escaneando este QR.</p>
     <img src="qr.png" alt="QR OXIUS Multiservice">
 </section>
 
@@ -172,8 +213,32 @@
     © 2025 OXIUS Multiservice – Todos los derechos reservados
 </footer>
 
-<!-- Botón WhatsApp flotante -->
-<a class="whatsapp" href="https://wa.me/56988361607" target="_blank">🟢</a>
+<!-- WhatsApp flotante con logo REAL -->
+<a class="whatsapp" href="https://wa.me/56988361607" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<script>
+    let index = 0;
+    const track = document.getElementById("carouselTrack");
+    const slides = track.children.length;
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+        index = (index + 1) % slides;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        index = (index - 1 + slides) % slides;
+        updateCarousel();
+    }
+
+    setInterval(nextSlide, 5000);
+</script>
 
 </body>
 </html>
